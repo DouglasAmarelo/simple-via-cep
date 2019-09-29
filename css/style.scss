@@ -1,0 +1,120 @@
+* { box-sizing: border-box; }
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	overflow: auto;
+	padding: 0;
+}
+
+body {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	background-color: #f1f1f1;
+
+	// Remove some map items
+	.gm-style-mtc {
+		display: none;
+		visibility: hidden;
+	}
+}
+
+// Helpers
+
+.hide {
+	display: none;
+	visibility: hidden;
+}
+
+// Container
+.card-container {
+	background-color: #fff;
+	box-shadow: 0 7px 10px 0 rgba(0, 0, 0, .150);
+	margin: 2em auto;
+	max-width: 500px;
+	padding: 2em;
+	position: relative;
+	transition: box-shadow .1s linear;
+	width: 90%;
+	will-change: box-shadow;
+	z-index: 100;
+
+	&:hover { box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .260); }
+
+	&:empty { display: none; }
+
+	// Title
+	&__title {
+		font-size: 22px;
+		line-height: 18px;
+		margin: 0 0 1em 0;
+		padding: 0;
+		text-transform: uppercase;
+	}
+}
+
+// Form
+.consulta-cep {
+	display: flex;
+	justify-content: space-between;
+
+	&__cep-input,
+	&__cta { padding: .7em 1em; }
+
+	&__cep-input {
+		border: 1px solid #ccc;
+		width: 100%;
+
+		&:hover { border-color: #9c9c9c; }
+	}
+
+	&__cta { margin-left: .5em; }
+}
+
+// Map
+.map {
+	background-color: #ccc;
+
+	&.is--active {
+		border: 1px solid #ccc;
+		height: 400px;
+		margin-top: 2em;
+	}
+}
+
+// Close map
+.close-map {
+	background-color: transparent;
+	border: none;
+	border-radius: 40px;
+	cursor: pointer;
+	height: 40px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 40px;
+	font-size: 0;
+
+	&:before {
+		content: 'x';
+		font-size: 16px;
+		font-weight: bold;
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+// Address info
+.address {
+	font-size: 16px;
+
+	&__title {
+		display: block;
+		margin: 0;
+		font-size: 20px;
+	}
+
+	&__text { margin: .5em 0; }
+}

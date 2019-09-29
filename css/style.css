@@ -1,0 +1,136 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: #f1f1f1;
+}
+
+body .gm-style-mtc {
+  display: none;
+  visibility: hidden;
+}
+
+.hide {
+  display: none;
+  visibility: hidden;
+}
+
+.card-container {
+  background-color: #fff;
+  -webkit-box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.15);
+  margin: 2em auto;
+  max-width: 500px;
+  padding: 2em;
+  position: relative;
+  -webkit-transition: -webkit-box-shadow .1s linear;
+  transition: -webkit-box-shadow .1s linear;
+  transition: box-shadow .1s linear;
+  transition: box-shadow .1s linear, -webkit-box-shadow .1s linear;
+  width: 90%;
+  will-change: box-shadow;
+  z-index: 100;
+}
+
+.card-container:hover {
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.26);
+          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.26);
+}
+
+.card-container:empty {
+  display: none;
+}
+
+.card-container__title {
+  font-size: 22px;
+  line-height: 18px;
+  margin: 0 0 1em 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.consulta-cep {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.consulta-cep__cep-input, .consulta-cep__cta {
+  padding: .7em 1em;
+}
+
+.consulta-cep__cep-input {
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.consulta-cep__cep-input:hover {
+  border-color: #9c9c9c;
+}
+
+.consulta-cep__cta {
+  margin-left: .5em;
+}
+
+.map {
+  background-color: #ccc;
+}
+
+.map.is--active {
+  border: 1px solid #ccc;
+  height: 400px;
+  margin-top: 2em;
+}
+
+.close-map {
+  background-color: transparent;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  font-size: 0;
+}
+
+.close-map:before {
+  content: 'x';
+  font-size: 16px;
+  font-weight: bold;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.address {
+  font-size: 16px;
+}
+
+.address__title {
+  display: block;
+  margin: 0;
+  font-size: 20px;
+}
+
+.address__text {
+  margin: .5em 0;
+}
+/*# sourceMappingURL=style.css.map */

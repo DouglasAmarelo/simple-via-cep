@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Via Cep - Simple</title>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+	<div class="card-container">
+		<h1 class="card-container__title">
+			Consultar seu CEP
+		</h1>
+
+		<form action="#" class="consulta-cep">
+			<input
+				class="consulta-cep__cep-input"
+				type="text"
+				name="cep"
+				id="cep"
+				placeholder="Digite seu CEP:"
+				maxlength="9"
+			>
+			<button class="consulta-cep__cta" type="submit">Buscar</button>
+		</form>
+	</div>
+
+	<div class="card-container hide">
+		<button class="close-map" title="Fechar mapa">
+			Fechar mapa
+		</button>
+
+		<div class="address-found"></div>
+		<div class="map" id="map"></div>
+	</div>
+
+	<script src="./js/app.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAl8ZMbjDz9QTCbTkGwCR_7NmZcd0XZMOo"></script>
+
+</body>
+</html>
