@@ -26,7 +26,7 @@ body .gm-style-mtc {
   visibility: hidden;
 }
 
-.card-container {
+.card {
   background-color: #fff;
   -webkit-box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.15);
           box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.15);
@@ -43,16 +43,16 @@ body .gm-style-mtc {
   z-index: 100;
 }
 
-.card-container:hover {
+.card:hover {
   -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.26);
           box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.26);
 }
 
-.card-container:empty {
+.card:empty {
   display: none;
 }
 
-.card-container__title {
+.card__title {
   font-size: 22px;
   line-height: 18px;
   margin: 0 0 1em 0;
@@ -60,7 +60,7 @@ body .gm-style-mtc {
   text-transform: uppercase;
 }
 
-.consulta-cep {
+.cep-consult {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,34 +69,37 @@ body .gm-style-mtc {
           justify-content: space-between;
 }
 
-.consulta-cep__cep-input, .consulta-cep__cta {
+.cep-consult__cep-input, .cep-consult__cta {
   padding: .7em 1em;
 }
 
-.consulta-cep__cep-input {
+.cep-consult__cep-input {
   border: 1px solid #ccc;
   width: 100%;
 }
 
-.consulta-cep__cep-input:hover {
+.cep-consult__cep-input:hover {
   border-color: #9c9c9c;
 }
 
-.consulta-cep__cta {
+.cep-consult__cta {
   margin-left: .5em;
+}
+
+.cep-consult__error {
+  color: #fd3f3f;
+  font-size: 14px;
+  margin-top: 1em;
 }
 
 .map {
   background-color: #ccc;
-}
-
-.map.is--active {
   border: 1px solid #ccc;
   height: 400px;
   margin-top: 2em;
 }
 
-.close-map {
+.map-close {
   background-color: transparent;
   border: none;
   border-radius: 40px;
@@ -109,7 +112,7 @@ body .gm-style-mtc {
   font-size: 0;
 }
 
-.close-map:before {
+.map-close:before {
   content: 'x';
   font-size: 16px;
   font-weight: bold;

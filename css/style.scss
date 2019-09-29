@@ -26,8 +26,8 @@ body {
 	visibility: hidden;
 }
 
-// Container
-.card-container {
+// Card
+.card {
 	background-color: #fff;
 	box-shadow: 0 7px 10px 0 rgba(0, 0, 0, .150);
 	margin: 2em auto;
@@ -54,7 +54,7 @@ body {
 }
 
 // Form
-.consulta-cep {
+.cep-consult {
 	display: flex;
 	justify-content: space-between;
 
@@ -69,21 +69,25 @@ body {
 	}
 
 	&__cta { margin-left: .5em; }
+
+	// Error
+	&__error {
+		color: #fd3f3f;
+		font-size: 14px;
+		margin-top: 1em;
+	}
 }
 
 // Map
 .map {
 	background-color: #ccc;
-
-	&.is--active {
-		border: 1px solid #ccc;
-		height: 400px;
-		margin-top: 2em;
-	}
+	border: 1px solid #ccc;
+	height: 400px;
+	margin-top: 2em;
 }
 
 // Close map
-.close-map {
+.map-close {
 	background-color: transparent;
 	border: none;
 	border-radius: 40px;

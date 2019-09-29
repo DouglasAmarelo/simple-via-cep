@@ -1,15 +1,16 @@
 // Variables
-const API_KEY_GOOGLEMAPS = `AIzaSyAl8ZMbjDz9QTCbTkGwCR_7NmZcd0XZMOo`;
-const $form = document.querySelector('.consulta-cep');
-const $cepInput = $form.querySelector('.consulta-cep__cep-input');
-const $map = document.querySelector('.map');
-const $mapClose = document.querySelector('.close-map');
+const GM_API_K      = `AIzaSyAl8ZMbjDz9QTCbTkGwCR_7NmZcd0XZMOo`;
+const SPLoLocation  = { lat: -23.6536633, lng: -46.7066927 };
+const $form         = document.querySelector('.cep-consult');
+const $cepInput     = $form.querySelector('.cep-consult__cep-input');
+const $cepError     = document.querySelector('.cep-consult__error');
+const $map          = document.querySelector('.map');
+const $mapClose     = document.querySelector('.map-close');
 const $addressFound = document.querySelector('.address-found');
-const saoPauloLocation = { lat: -23.6536633, lng: -46.7066927 };
 let map;
 let marker;
 
-function initMap(location = saoPauloLocation, zoom = 10) {
+function initMap(location = SPLoLocation, zoom = 10) {
 	map = new google.maps.Map($map, {
 		center: location,
 		zoom: zoom
@@ -20,15 +21,9 @@ function initMap(location = saoPauloLocation, zoom = 10) {
 		map: map,
 		animation: google.maps.Animation.DROP,
 	});
-
-	$map.classList.add('is--active');
-	mapVisibilityToggle();
 };
 
-
-const mapVisibilityToggle = () => {
-	$map.parentNode.classList.toggle('hide');
-};
+const mapVisibilityToggle = () => $map.parentNode.classList.toggle('hide');
 
 const getDataFromApi = async (apiUrl) => {
 	try {
@@ -49,13 +44,14 @@ const getAddress = cep => {
 };
 
 const getGeoLocation = address => {
-	const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY_GOOGLEMAPS}`;
+	const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${GM_API_K}`;
 
 	return getDataFromApi(apiUrl);
 };
 
-const updateMapInfo = ({ bairro, cep, localidade, uf, logradouro }) => {
+const renderMapInfo = ({ bairro, cep, localidade, uf, logradouro }) => {
 	if (!cep) {
+		renderError(`Nenhuma informação encontrada.`);
 		return;
 	}
 
@@ -71,20 +67,29 @@ const updateMapInfo = ({ bairro, cep, localidade, uf, logradouro }) => {
 	$addressFound.innerHTML = template;
 };
 
+const renderError = message => $cepError.textContent = message;
+
 $form.addEventListener('submit', e => {
 	e.preventDefault();
-
 	const cep = $form.cep.value;
+
+	if (!cep) {
+		renderError('Por favor, informe um CEP');
+		return;
+	}
+
 	const cepInformation = getAddress(cep);
-
 	cepInformation.then(data => {
-		const { logradouro: address } = data;
-
-		updateMapInfo(data)
-		getGeoLocation(address).then(data => {
-			const geoLocation = data.results[0].geometry.location;
-
-			initMap(geoLocation, 14);
+		renderMapInfo(data);
+		mapVisibilityToggle();
+		getGeoLocation(data.logradouro).then(data => {
+			if (data && data.results[0]) {
+				let geoLocation = data.results[0].geometry.location;
+				initMap(geoLocation, 14);
+			}
+			else {
+				renderError(`Nenhum resultado encontrado para o CEP: ${cep}`);
+			}
 		});
 	});
 });
