@@ -1,0 +1,24 @@
+// Form
+.cep-consult {
+	display: flex;
+	justify-content: space-between;
+
+	&__cep-input,
+	&__cta { padding: .7em 1em; }
+
+	&__cep-input {
+		border: 1px solid #ccc;
+		width: 100%;
+
+		&:hover { border-color: #9c9c9c; }
+	}
+
+	&__cta { margin-left: .5em; }
+
+	// Error
+	&__error {
+		color: #fd3f3f;
+		font-size: 14px;
+		margin-top: 1em;
+	}
+}

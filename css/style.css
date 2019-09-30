@@ -11,15 +11,19 @@ body {
   padding: 0;
 }
 
-body {
-  background-color: #f1f1f1;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  overflow-y: scroll;
-}
-
+html .gm-style-mtc,
 body .gm-style-mtc {
   display: none;
   visibility: hidden;
+}
+
+body {
+  background-color: #f1f1f1;
+  overflow-y: scroll;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .hide {

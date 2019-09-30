@@ -1,0 +1,20 @@
+* { box-sizing: border-box; }
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	overflow: auto;
+	padding: 0;
+
+	// Remove some map items
+	.gm-style-mtc {
+		display: none;
+		visibility: hidden;
+	}
+}
+
+body {
+	background-color: #f1f1f1;
+	overflow-y: scroll;
+}
