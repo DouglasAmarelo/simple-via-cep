@@ -1,6 +1,5 @@
 // Variables
 const GM_API_K      = `AIzaSyAl8ZMbjDz9QTCbTkGwCR_7NmZcd0XZMOo`;
-const SPLoLocation  = { lat: -23.6536633, lng: -46.7066927 };
 const $form         = document.querySelector('.cep-consult');
 const $cepInput     = $form.querySelector('.cep-consult__cep-input');
 const $cepError     = document.querySelector('.cep-consult__error');
@@ -10,20 +9,10 @@ const $addressFound = document.querySelector('.address-found');
 let map;
 let marker;
 
-function initMap(location = SPLoLocation, zoom = 10) {
-	map = new google.maps.Map($map, {
-		center: location,
-		zoom: zoom
-	});
+// Helpers
+const showMap = () => $map.parentNode.setAttribute('class', 'card');
 
-	marker = new google.maps.Marker({
-		position: location,
-		map: map,
-		animation: google.maps.Animation.DROP,
-	});
-};
-
-const mapVisibilityToggle = () => $map.parentNode.classList.toggle('hide');
+const hideMap = () => $map.parentNode.setAttribute('class', 'card hide');
 
 const getDataFromApi = async (apiUrl) => {
 	try {
@@ -37,24 +26,36 @@ const getDataFromApi = async (apiUrl) => {
 	}
 };
 
+// Get information from viaCEP
 const getAddress = cep => {
 	const apiUrl = `https://viacep.com.br/ws/${cep}/json/`;
 
 	return getDataFromApi(apiUrl);
 };
 
+// Get information from Google Maps
 const getGeoLocation = address => {
 	const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${GM_API_K}`;
 
 	return getDataFromApi(apiUrl);
 };
 
-const renderMapInfo = ({ bairro, cep, localidade, uf, logradouro }) => {
-	if (!cep) {
-		renderError(`Nenhuma informação encontrada.`);
-		return;
-	}
+// Start the map with the information
+const initMap = (location, zoom = 10) => {
+	map = new google.maps.Map($map, {
+		center: location,
+		zoom: zoom
+	});
 
+	marker = new google.maps.Marker({
+		position: location,
+		map: map,
+		animation: google.maps.Animation.DROP,
+	});
+};
+
+// Render the address information
+const renderAddressInfo = ({ bairro, cep, localidade, uf, logradouro }) => {
 	const template = `
 		<div class="address">
 			<h2 class="address__title">${logradouro}</h2>
@@ -67,29 +68,60 @@ const renderMapInfo = ({ bairro, cep, localidade, uf, logradouro }) => {
 	$addressFound.innerHTML = template;
 };
 
-const renderError = message => $cepError.textContent = message;
+// Render an error message in to the form
+const renderError = message => {
+	$cepError.textContent = message;
 
+	setTimeout(() => {
+		$cepError.textContent = '';
+	}, 2000);
+};
+
+// Reset form input and hide the map
+const resetForm = () => {
+	$cepInput.value = '';
+
+	hideMap();
+};
+
+// Handle submit form
 $form.addEventListener('submit', e => {
 	e.preventDefault();
 	const cep = $form.cep.value;
 
+	// If has no CEP, render an error and stop the execution of the code
 	if (!cep) {
 		renderError('Por favor, informe um CEP');
 		return;
 	}
 
-	const cepInformation = getAddress(cep);
-	cepInformation.then(data => {
-		renderMapInfo(data);
-		mapVisibilityToggle();
-		getGeoLocation(data.logradouro).then(data => {
-			if (data && data.results[0]) {
-				let geoLocation = data.results[0].geometry.location;
+	// If the cep to search is equal to the prev searched cep, stop the execution of the code
+	if ($map.getAttribute('data-researched') === cep) {
+		showMap();
+		return;
+	}
+
+	getAddress(cep).then(viaCEPData => {
+		if (viaCEPData.erro) {
+			renderError(`Nenhuma informação encontrada.`);
+			hideMap();
+			return;
+		}
+
+		$map.setAttribute('data-researched', cep);
+
+		getGeoLocation(viaCEPData.logradouro).then(mapLocationData => {
+			if (mapLocationData && mapLocationData.results[0]) {
+				let geoLocation = mapLocationData.results[0].geometry.location;
+
 				initMap(geoLocation, 14);
+				renderAddressInfo(viaCEPData);
+				showMap();
+
+				return;
 			}
-			else {
-				renderError(`Nenhum resultado encontrado para o CEP: ${cep}`);
-			}
+
+			renderError(`Nenhum resultado encontrado para o CEP: ${cep}`);
 		});
 	});
 });
@@ -103,5 +135,4 @@ const handleInputValue = (event) => {
 };
 
 $cepInput.addEventListener('input', handleInputValue);
-
-$mapClose.addEventListener('click', mapVisibilityToggle);
+$mapClose.addEventListener('click', resetForm);
