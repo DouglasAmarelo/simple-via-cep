@@ -2,7 +2,7 @@
 	'use strict';
 
 	// Variables
-	const GM_API_K      = `AIzaSyAl8ZMbjDz9QTCbTkGwCR_7NmZcd0XZMOo`;
+	const GM_API_K      = `AIzaSyD-8H_N7vrRpRt54CzyAHaNPY_t-JD1Nv4`;
 	const SPLocation    = { lat: -23.6536633, lng: -46.7066927 };
 	const $form         = document.querySelector('.cep-consult');
 	const $cepInput     = $form.querySelector('.cep-consult__cep-input');
