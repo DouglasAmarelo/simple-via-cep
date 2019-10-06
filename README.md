@@ -8,7 +8,7 @@
 > Usando as API's do [Via CEP](https://viacep.com.br) e do [Google Maps](https://developers.google.com/maps/documentation/?hl=pt-br), é possível pesquisar o CEP digitado e encontrar o endereço na visualização do Google Maps.
 
 ### 🏠 [Homepage](https://douglas-lopes-simple-via-cep.netlify.com/)
-Você pode acessar o [projeto funcioando aqui](https://douglas-lopes-simple-via-cep.netlify.com/).
+Você pode acessar o [projeto funcionando aqui](https://douglas-lopes-simple-via-cep.netlify.com/).
 
 ## Install
 Para instalar o projeto, você só vai precisar clonar o repositório ou baixar o .zip do projeto.
