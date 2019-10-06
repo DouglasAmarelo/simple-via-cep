@@ -20,6 +20,7 @@ body .gm-style-mtc {
 body {
   background-color: #f1f1f1;
   overflow-y: scroll;
+  padding-bottom: 60px;
 }
 
 body {
@@ -29,6 +30,36 @@ body {
 .hide {
   display: none;
   visibility: hidden;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  25% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  25% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 
 .card {
@@ -144,5 +175,31 @@ body {
 
 .address__text {
   margin: .5em 0;
+}
+
+.footer {
+  background-color: #fff;
+  bottom: 0;
+  -webkit-box-shadow: inset 0 3px 4px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: inset 0 3px 4px 0 rgba(0, 0, 0, 0.15);
+  font-family: 'Arial';
+  font-size: 12px;
+  left: 0;
+  padding: 1.25em 5%;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.footer__link {
+  color: #f7630c;
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.heart {
+  -webkit-animation: pulse 1s infinite;
+          animation: pulse 1s infinite;
+  display: inline-block;
 }
 /*# sourceMappingURL=style.css.map */

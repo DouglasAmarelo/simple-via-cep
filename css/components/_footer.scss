@@ -1,0 +1,25 @@
+// Footer
+.footer {
+	background-color: #fff;
+	bottom: 0;
+	box-shadow: inset 0 3px 4px 0 rgba(0, 0, 0, .150);
+	font-family: 'Arial';
+	font-size: 12px;
+	left: 0;
+	padding: 1.25em 5%;
+	position: fixed;
+	text-align: center;
+	width: 100%;
+
+	// Link
+	&__link {
+		color: #f7630c;
+		display: inline-block;
+		padding: 0 5px;
+	}
+}
+
+.heart {
+	animation: pulse 1s infinite;
+	display: inline-block;
+}
