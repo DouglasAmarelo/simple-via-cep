@@ -126,7 +126,7 @@
 			getGeoLocation(viaCEPData.logradouro).then(mapLocationData => {
 				if (mapLocationData && mapLocationData.results[0]) {
 					let geoLocation = mapLocationData.results[0].geometry.location;
-					let mapZoom = 14;
+					let mapZoom = 15;
 
 					renderMap(geoLocation, mapZoom);
 					renderAddressInfo(viaCEPData);
