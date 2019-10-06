@@ -99,9 +99,16 @@
 		event.preventDefault();
 		const cep = $form.cep.value;
 
-		// If it has no zip code, renders the error and stops code execution
+		// If it has no zip code, renders an error and stops code execution
 		if (!cep) {
 			renderError('Por favor, informe um CEP');
+
+			return;
+		}
+
+		// If the data has no 9 characters, renders an error and stops code execution
+		if (cep.length > 0 && cep.length < 9) {
+			renderError('Por favor, informe um CEP válido');
 
 			return;
 		}
