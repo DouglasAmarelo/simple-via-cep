@@ -20,5 +20,7 @@
 		color: #fd3f3f;
 		font-size: 14px;
 		margin-top: 1em;
+
+		&:empty { display: none; }
 	}
 }

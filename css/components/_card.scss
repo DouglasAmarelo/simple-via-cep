@@ -1,9 +1,9 @@
 // Card
 .card {
 	background-color: #fff;
-	box-shadow: 0 7px 10px 0 rgba(0, 0, 0, .150);
+	box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .150);
 	margin: 2em auto;
-	max-width: 500px;
+	max-width: 700px;
 	padding: 2em;
 	position: relative;
 	transition: box-shadow .1s linear;
@@ -11,7 +11,7 @@
 	will-change: box-shadow;
 	z-index: 100;
 
-	&:hover { box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .260); }
+	&:hover { box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .260); }
 
 	&:empty { display: none; }
 
