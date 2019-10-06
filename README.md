@@ -1,8 +1,5 @@
 <h1 align="center">Welcome to simple-via-cep 👋</h1>
 <p>
-  <a href="https://www.npmjs.com/package/simple-via-cep" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/simple-via-cep.svg">
-  </a>
   <a href="https://twitter.com/DouglasAmarelo" target="_blank">
     <img alt="Twitter: DouglasAmarelo" src="https://img.shields.io/twitter/follow/DouglasAmarelo.svg?style=social" />
   </a>
