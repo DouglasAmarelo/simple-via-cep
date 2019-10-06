@@ -33,10 +33,10 @@ body {
 
 .card {
   background-color: #fff;
-  -webkit-box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.15);
-          box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.15);
   margin: 2em auto;
-  max-width: 500px;
+  max-width: 700px;
   padding: 2em;
   position: relative;
   -webkit-transition: -webkit-box-shadow .1s linear;
@@ -49,8 +49,8 @@ body {
 }
 
 .card:hover {
-  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.26);
-          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.26);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.26);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.26);
 }
 
 .card:empty {
@@ -95,6 +95,10 @@ body {
   color: #fd3f3f;
   font-size: 14px;
   margin-top: 1em;
+}
+
+.cep-consult__error:empty {
+  display: none;
 }
 
 .map {
